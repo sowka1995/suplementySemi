@@ -1,0 +1,25 @@
+{
+  "name": "suplementysemi",
+  "version": "1.0.0",
+  "description": "Projekt Semistrukturalne bazy danych",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sowka1995/suplementySemi.git"
+  },
+  "author": "Bartosz Sowa, Paweł Wasil, Krzysztof Sobiech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sowka1995/suplementySemi/issues"
+  },
+  "homepage": "https://github.com/sowka1995/suplementySemi#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.27"
+  }
+}
