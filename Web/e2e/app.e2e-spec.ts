@@ -1,14 +1,16 @@
 import { WebPage } from './app.po';
 
-describe('web App', function() {
+describe('web App', () => {
   let page: WebPage;
 
   beforeEach(() => {
     page = new WebPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', done => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    page.getParagraphText()
+      .then(msg => expect(msg).toEqual('Welcome to app!!'))
+      .then(done, done.fail);
   });
 });
