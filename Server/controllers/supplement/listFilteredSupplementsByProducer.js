@@ -3,7 +3,7 @@ var connection = require('./../../common/connection.js');
 // Wylistowanie wszystkich suplementów danego producenta
 module.exports.main = function(request, response) {
   let _producerFilter = request.params.producerFilter
-  console.log(_producerFilter + 'dupa')
+
 	connection(function(error, db) {
     if (error) {
         response.status(500).json(null)
