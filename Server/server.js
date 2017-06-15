@@ -5,7 +5,7 @@ var routes = require('./routes.js')
 
 var app = express()
 app.use(cors())
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb', type: 'application/json'}));
 routes(app)
 
 app.listen(3000)

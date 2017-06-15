@@ -7,14 +7,14 @@ module.exports.main = function(request, response) {
     if (error) {
         response.status(500).json(null)
     }
-    
 		var resultArray = new Array();
 		var supplementsCollection = db.collection('supplements');
 
-		supplementsCollection.find({}, {producer: 1, _id: 0}).toArray(function(err, producers) {
+		supplementsCollection.distinct('producer', {}, function(err, producers) {
 			if (err) {
 				response.status(400).json(null);
 			}
+
 			response.json(producers);
 		});
 

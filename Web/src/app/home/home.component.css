@@ -31,7 +31,8 @@ a {
 }
 
 .thumbnail img {
-    width: 100%;
+    width: 180px;
+    height: 200px;
 }
 
 .ratings {

@@ -9,14 +9,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { AddSupplementComponent } from './add-supplement/add-supplement.component';
 import  {SupplementService } from './services/supplementService';
+import { SupplementComponent } from './supplement/supplement.component';
+import { SupplementAddComponent } from './supplement-add/supplement-add.component';
+import { SupplementInfoComponent } from './supplement-info/supplement-info.component';
 
 const routes = [
   {path: '', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'add-supplement', component: AddSupplementComponent},
+  {path: 'supplement', component: SupplementComponent, children: [
+    {path: 'add', component: SupplementAddComponent},
+    {path: 'info', component: SupplementInfoComponent}
+  ]}
 ];
 
 @NgModule({
@@ -25,7 +30,9 @@ const routes = [
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    AddSupplementComponent
+    SupplementComponent,
+    SupplementAddComponent,
+    SupplementInfoComponent
   ],
   imports: [
     BrowserModule,

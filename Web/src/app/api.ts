@@ -9,4 +9,5 @@ export const listFilteredSupplementsByCategory = function (categoryFilter) {
 export const listFilteredSupplementsByProducer= function (producerFilter) {
     return server + '/supplements/listFilteredSupplementsByProducer/' + producerFilter;
 };
+export const addSupplement: string = server + '/supplements/add';
 

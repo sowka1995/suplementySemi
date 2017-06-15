@@ -6,7 +6,7 @@ import { Opinion } from './../models/opinion';
 import 'rxjs/add/observable/of';
 
 import {
-    listAllCategories, listAllProducers, listAllSupplements, listFilteredSupplementsByCategory,
+    addSupplement, listAllCategories, listAllProducers, listAllSupplements, listFilteredSupplementsByCategory,
     listFilteredSupplementsByProducer
 } from '../api';
 import { isNullOrUndefined } from 'util';
@@ -41,7 +41,7 @@ export class SupplementService {
             .then((response) => {
                 let categories = new Array<string>();
                 response.json().forEach((item) => {
-                    categories.push(item.category)
+                    categories.push(item)
                 });
 
                 callback(null, categories);
@@ -57,7 +57,7 @@ export class SupplementService {
             .then((response) => {
                 let producers = new Array<string>();
                 response.json().forEach((item) => {
-                    producers.push(item.producer)
+                    producers.push(item)
                 });
 
                 callback(null, producers);
@@ -102,6 +102,19 @@ export class SupplementService {
             })
             .catch((errors) => {
                 callback(errors, null);
+            })
+    }
+
+    postAddSupplement(supplement, callback) {
+        this.http.post(addSupplement, supplement)
+            .toPromise()
+            .then((response) => {
+                if (response.status === 200) {
+                    callback(null, 'pomyślnie dodano produkt');
+                }
+            })
+            .catch((errors) => {
+                callback(errors, null)
             })
     }
 
