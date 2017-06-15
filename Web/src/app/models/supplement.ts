@@ -7,6 +7,7 @@ export class Supplement {
     producer: string;
     description: string;
     price: number;
+    weight: number;
     amount: number;
     image: string;
     rate?: Array<number>;

@@ -11,6 +11,7 @@ import { Opinion } from "../models/opinion";
 
 import 'rxjs/add/operator/toPromise';
 import { isNullOrUndefined } from "util";
+import {SupplementService} from "../services/supplementService";
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   error: { messages: Array<string>} = { messages: null };
 
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: Http, private router: Router, private supplement: SupplementService) { }
 
   ngOnInit() {
     this.handleListAll();
@@ -37,149 +38,59 @@ export class HomeComponent implements OnInit {
   handleListAll() {
     this.error = {messages: null};
 
-    this.http.get(listAllSupplements)
-        .toPromise()
-        .then((response) => {
-         // dodanie wszystkich itemow do listy
-         response.json().forEach((supplement) => {
-             let item = new Supplement();
-             item.id = supplement._id;
-             item.name = supplement.name;
-             item.category = supplement.category;
-             item.producer = supplement.producer;
-             item.description = supplement.description;
-             item.price = supplement.price;
-             item.amount = supplement.amount;
-             item.image = supplement.image;
+    this.supplement.getAllSupplements((errors, supplements) => {
+        if (!errors) {
+            this.supplementsList = supplements;
+        } else {
+            this.error.messages = errors;
+        }
+    })
 
-             if (!isNullOrUndefined(supplement.opinions)) {
-                 let count = 0;
-                 let opinions: Array<Opinion> = new Array<Opinion>();
-                 supplement.opinions.forEach(o => {
-                    let opinion = new Opinion();
-                    opinion.comment = o.comment;
-                    opinion.commentDate = o.commentDate;
-                    opinion.rate = o.rate;
-                    opinions.push(opinion);
-                    count += o.rate;
-                 });
-                 item.opinions = opinions;
-                 item.rate = new Array(Math.round(count/supplement.opinions.length));
-             }
-
-             this.supplementsList.push(item);
-         });
-        })
-        .catch((errors) => {
-            console.log(errors);
-        });
   }
 
   handleCategoriesList() {
-    this.http.get(listAllCategories)
-        .toPromise()
-        .then((response) => {
-            response.json().forEach((item) => {
-               this.categoriesList.push(item.category)
-            });
-        })
-        .catch((errors) => {
+    this.supplement.getAllCategories((errors, categories) => {
+        if (!errors){
+            this.categoriesList = categories;
+        } else {
             console.log(errors);
-        })
+        }
+    })
+
   }
 
   handleProducersList() {
-    this.http.get(listAllProducers)
-        .toPromise()
-        .then((response) => {
-            response.json().forEach((item) => {
-                this.producersList.push(item.producer)
-            });
-        })
-        .catch((errors) => {
+    this.supplement.getAllProducers((errors, producers) => {
+        if (!errors){
+            this.producersList = producers;
+        } else {
             console.log(errors);
-        })
+        }
+    })
+
   }
 
   handleFilterSupplementsByCategory(categoryFilter: string) {
-      this.http.get(listFilteredSupplementsByCategory(categoryFilter))
-          .toPromise()
-          .then((response) => {
-              this.supplementsList = new Array<Supplement>();
-              // dodanie wszystkich itemow do listy
-              response.json().forEach((supplement) => {
-                  let item = new Supplement();
-                  item.id = supplement._id;
-                  item.name = supplement.name;
-                  item.category = supplement.category;
-                  item.producer = supplement.producer;
-                  item.description = supplement.description;
-                  item.price = supplement.price;
-                  item.amount = supplement.amount;
-                  item.image = supplement.image;
+      this.supplement.getFilteredSupplementByCategories(categoryFilter, (errors, supplements) => {
+          if (!errors) {
+              this.supplementsList = supplements;
+          } else {
+              console.log(errors);
+          }
+      })
 
-                  if (!isNullOrUndefined(supplement.opinions)) {
-                      let count = 0;
-                      let opinions: Array<Opinion> = new Array<Opinion>();
-                      supplement.opinions.forEach(o => {
-                          let opinion = new Opinion();
-                          opinion.comment = o.comment;
-                          opinion.commentDate = o.commentDate;
-                          opinion.rate = o.rate;
-                          opinions.push(opinion);
-                          count += o.rate;
-                      });
-                      item.opinions = opinions;
-                      item.rate = new Array(Math.round(count / supplement.opinions.length));
-                  }
-
-                  this.supplementsList.push(item);
-              });
-          })
-          .catch((errors) => {
-
-          })
   }
 
   handleFilterSupplementsByProducer(producerFilter: string) {
-    this.http.get(listFilteredSupplementsByProducer(producerFilter.toString()))
-        .toPromise()
-        .then((response) => {
-            this.supplementsList = new Array<Supplement>();
-            // dodanie wszystkich itemow do listy
-            response.json().forEach((supplement) => {
-                let item = new Supplement();
-                item.id = supplement._id;
-                item.name = supplement.name;
-                item.category = supplement.category;
-                item.producer = supplement.producer;
-                item.description = supplement.description;
-                item.price = supplement.price;
-                item.amount = supplement.amount;
-                item.image = supplement.image;
+      this.supplement.getFilteredSupplementsByProducers(producerFilter, (errors, supplements) => {
+          if (!errors) {
+              this.supplementsList = supplements;
+          } else {
+              console.log(errors);
+          }
+      })
 
-                if (!isNullOrUndefined(supplement.opinions)) {
-                    let count = 0;
-                    let opinions: Array<Opinion> = new Array<Opinion>();
-                    supplement.opinions.forEach(o => {
-                        let opinion = new Opinion();
-                        opinion.comment = o.comment;
-                        opinion.commentDate = o.commentDate;
-                        opinion.rate = o.rate;
-                        opinions.push(opinion);
-                        count += o.rate;
-                    });
-                    item.opinions = opinions;
-                    item.rate = new Array(Math.round(count / supplement.opinions.length));
-                }
-
-                this.supplementsList.push(item);
-            });
-        })
-        .catch((errors) => {
-
-        })
-    }
+  }
 
 
 }

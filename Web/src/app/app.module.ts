@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddSupplementComponent } from './add-supplement/add-supplement.component';
+import  {SupplementService } from './services/supplementService';
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -33,7 +34,7 @@ const routes = [
     RouterModule.forRoot(routes),
 	ImageUploadModule.forRoot()
   ],
-  providers: [],
+  providers: [SupplementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

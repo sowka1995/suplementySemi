@@ -4,11 +4,11 @@
 
 		<div class="col-md-3">
 			<div class="lead">
-				<a><img src="../../assets/logo.png" alt="ShopLogo" style="width:240px;height:380px;"></a>
+				<a (click)="handleListAll()"><img src="../../assets/logo.png" alt="ShopLogo" style="width:240px;height:380px;"></a>
 			</div>
 			<p class="lead">KATEGORIE</p>
 			<div class="list-group">
-				<a href="#" class="list-group-item" *ngFor="let category of categoriesList"
+				<a class="list-group-item" *ngFor="let category of categoriesList"
 				   (click)="handleFilterSupplementsByCategory(category)">
 					{{category}}
 				</a>
@@ -18,7 +18,7 @@
 			
 			<p class="lead">PRODUCENCI</p>
 			<div class="list-group">
-				<a href="#" class="list-group-item" *ngFor="let producer of producersList"
+				<a class="list-group-item" *ngFor="let producer of producersList"
 				   (click)="handleFilterSupplementsByProducer(producer)">
 					{{producer}}
 				</a>
@@ -54,6 +54,7 @@
 						<img src="./../../assets/images/{{supplement.image}}" alt="">
 						<div class="caption">
 							<h4><a href="#">{{supplement.name}}</a></h4>
+							{{ supplement.weight }}
 							<h4 class="pull-right">{{supplement.price}} zł</h4>
 							<br /> <br />
 							<p>{{supplement.description}}</p>
