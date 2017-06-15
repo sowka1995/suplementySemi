@@ -1,6 +1,6 @@
 var connection = require('./../../common/connection.js');
 
-// Wylistowanie wszystkich kategorii
+// Dodanie produktu
 module.exports.main = function(request, response) {
 
 	connection(function(error, db) {
@@ -10,12 +10,15 @@ module.exports.main = function(request, response) {
 
 		var obj = new Object();
 		var supplementsCollection = db.collection('supplements');
+
+    // zapisanie zdjęcia lokalnie
     var base64Data = request.body.imageSource.replace(/^data:image\/jpeg;base64,/, "");
     var imagePath = 'C:\\Users\\Bartosz\\Source\\Repos\\suplementySemi\\Web\\src\\assets\\images\\' + request.body.image;
 
     require("fs").writeFile(imagePath, base64Data, 'base64', function(err) {
       console.log(err);
     });
+    // koniec zapisywania zdjęcia
 
     obj.name = request.body.name;
     if (request.body.weight) {

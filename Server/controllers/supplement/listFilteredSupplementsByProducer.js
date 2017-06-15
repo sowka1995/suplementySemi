@@ -9,7 +9,6 @@ module.exports.main = function(request, response) {
         response.status(500).json(null)
     }
 
-		var resultArray = new Array();
 		var supplementsCollection = db.collection('supplements');
 
 		supplementsCollection.find({producer: _producerFilter}).toArray(function(err, supplements) {

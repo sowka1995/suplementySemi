@@ -7,7 +7,7 @@ module.exports.main = function(request, response) {
     if (error) {
         response.status(500).json(null)
     }
-		var resultArray = new Array();
+
 		var supplementsCollection = db.collection('supplements');
 
 		supplementsCollection.distinct('producer', {}, function(err, producers) {
