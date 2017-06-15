@@ -51,6 +51,9 @@ a {
     color: #333;
 }
 
+.active {
+    background-color: #A9A9A9 !important;
+}
 
 .stylish-input-group .input-group-addon{
     background: white !important; 

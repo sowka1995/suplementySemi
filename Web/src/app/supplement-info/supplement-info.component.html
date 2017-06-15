@@ -1,3 +1,41 @@
-<p>
-  supplement-info works!
-</p>
+<div class="col-md-9">
+  <div class = "row">
+
+    <div class = "ViewProductTitle">
+      <h1>{{supplementInfo.name}} <ng-template *ngIf="supplementInfo.weight">{{supplementInfo.weight}}</ng-template></h1>
+      <h2>{{supplementInfo.price}} zł</h2>
+    </div>
+    <div class="ViewProductRate"> Ocena klientów: tu masz miejsce na gwiazdki</div>
+
+    <div class="ViewProductImgBox">
+      <img src="../../assets/images/{{supplementInfo.image}}" alt="ShopLogo">
+    </div>
+
+    <div class="ViewProductDetails">
+      <h4>Kategoria: <div class="ViewProductInfo">{{supplementInfo.category}}</div>  </h4>
+      <h4>Producent: <div class="ViewProductInfo">{{supplementInfo.producer}}</div>  </h4>
+      <h4>Ilość: <div class="ViewProductInfo">{{supplementInfo.amount}}</div>  </h4>
+    </div>
+
+
+    <div class="ViewProductDescription">
+      <h3>Opis</h3>
+      {{supplementInfo.description}}
+    </div>
+
+    <div class="ViewProductComment">
+      <h3>Dodaj komentarz</h3>
+      <textarea></textarea>
+      <div class="ViewProductButton">
+        <button type="button">Wyślij</button>
+      </div>
+    </div>
+
+    <div class="ViewProductComment">
+      <ng-template *ngIf="opinions" *ngFor="let opinion of opinions">
+        kupa
+      </ng-template>
+    </div>
+
+  </div>
+</div>

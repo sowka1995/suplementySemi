@@ -4,12 +4,14 @@ import { Supplement } from './../models/supplement';
 import { Opinion } from './../models/opinion';
 
 import 'rxjs/add/observable/of';
+import { isNullOrUndefined } from 'util';
 
 import {
-    addSupplement, listAllCategories, listAllProducers, listAllSupplements, listFilteredSupplementsByCategory,
-    listFilteredSupplementsByProducer
+    addSupplement, listAllCategories, listAllProducers, listAllSupplements,
+    listFilteredSupplementsByCategory,
+    listFilteredSupplementsByProducer,
+    showSupplement
 } from '../api';
-import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class SupplementService {
@@ -102,6 +104,23 @@ export class SupplementService {
             })
             .catch((errors) => {
                 callback(errors, null);
+            })
+    }
+
+    getSupplementByName(supplementName, callback) {
+        this.http.get(showSupplement(supplementName))
+            .toPromise()
+            .then((response) => {
+                let supplementInfo;
+                response.json().forEach((supplement) => {
+                    supplementInfo = this.assignValues(supplement);
+                });
+
+                callback(null, supplementInfo);
+
+            })
+            .catch((errors) => {
+                callback(errors, null)
             })
     }
 

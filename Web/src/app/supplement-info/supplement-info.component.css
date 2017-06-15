@@ -1,0 +1,73 @@
+h1{
+    margin:10px;
+    margin-left:25px;
+    font-weight:bold;
+    display:inline-block;
+}
+h2{
+    font-weight:bold;
+    color:red;
+    text-align:right;
+    display:inline-block;
+    font-size:25pt;
+    margin-left:15px;
+}
+.ViewProductTitle{
+    width:100%;
+}
+.ViewProductRate{
+    font-size:9pt;
+    margin:5px;
+    margin-left:25px;
+}
+.ViewProductImgBox{
+    margin:10px;
+    margin-top:25px;
+    margin-left:25px;
+    display:inline-block;
+}
+.ViewProductDetails{
+    display:inline-block;
+    width:65%;
+}
+.ViewProductInfo{
+    display:inline-block;
+    font-size:12pt;
+    font-weight:normal;
+}
+.ViewProductDetails h4{
+    color: black;
+    display:block;
+    margin:15px;
+    margin-left:25px;
+    text-align:left;
+    font-weight:bold;
+}
+.ViewProductDescription{
+    width:100%;
+    margin-top:20px;
+    margin-left:25px;
+    display:inline-block;
+}
+.ViewProductComment {
+    width:100%;
+    margin-top:20px;
+    display:inline-block;
+    margin-left:25px;
+}
+.ViewProductComment textarea{
+    width:75%;
+    height:150px;
+    margin:10px;
+}
+.ViewProductCommentList{
+    width:100%;
+    margin-top:20px;
+    display:inline-block;
+}
+.ViewProductButton{
+    margin-left:10px;
+}.ViewProductButton button{
+     width:100px;
+ }
+

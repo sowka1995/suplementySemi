@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SupplementService } from '../services/supplementService';
+import { Supplement } from '../models/supplement';
+import {Opinion} from "../models/opinion";
 
 @Component({
   selector: 'app-supplement-info',
@@ -6,10 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supplement-info.component.css']
 })
 export class SupplementInfoComponent implements OnInit {
-
-  constructor() { }
+  supplementInfo: Supplement = new Supplement();
+  opinions: Array<Opinion> = null;
+  constructor(private route: ActivatedRoute, private supplementService: SupplementService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      const supplementName = params['name'];
+
+      this.supplementService.getSupplementByName(supplementName, (errors, supplement) => {
+        this.supplementInfo = supplement;
+        if (this.supplementInfo.opinions != null) {
+          this.opinions = this.supplementInfo.opinions;
+        }
+      })
+
+    })
   }
 
 }

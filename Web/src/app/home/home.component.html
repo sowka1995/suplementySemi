@@ -9,20 +9,21 @@
 			<p class="lead">KATEGORIE</p>
 			<div class="list-group">
 				<a class="list-group-item" *ngFor="let category of categoriesList"
+				   [ngClass]="{active: category === selectedCategory}"
 				   (click)="handleFilterSupplementsByCategory(category)">
 					{{category}}
 				</a>
 			</div>
 			
-			<p><a href="#">Pokaż wszystkie</a></p>
-			
 			<p class="lead">PRODUCENCI</p>
 			<div class="list-group">
 				<a class="list-group-item" *ngFor="let producer of producersList"
+				   [ngClass]="{active: producer === selectedProducer}"
 				   (click)="handleFilterSupplementsByProducer(producer)">
 					{{producer}}
 				</a>
 			</div>
+
 		</div>
 		
 
@@ -33,7 +34,7 @@
 				<div class="col-md-12">
 					<div id="imaginary_container"> 
 						<div class="input-group stylish-input-group">
-							<input type="text" class="form-control"  placeholder="Search" >
+							<input type="text" class="form-control"  placeholder="Szukaj" [(ngModel)]="suppNameFilter">
 							<span class="input-group-addon">
 								<button type="submit">
 									<span class="glyphicon glyphicon-search">
@@ -49,11 +50,11 @@
 
 			<div class="row">
 
-				<div class="col-sm-4 col-lg-4 col-md-4" *ngFor="let supplement of supplementsList">
+				<div class="col-sm-4 col-lg-4 col-md-4" *ngFor="let supplement of supplementsList | filterName: suppNameFilter">
 					<div class="thumbnail">
 						<img src="./../../assets/images/{{supplement.image}}" alt="">
 						<div class="caption">
-							<h4><a href="#">{{supplement.name}}</a></h4>
+							<h4><a [routerLink]="['supplement/info', supplement.name.toString()]">{{supplement.name}}</a></h4>
 							{{ supplement.weight }}
 							<h4 class="pull-right">{{supplement.price}} zł</h4>
 							<br /> <br />

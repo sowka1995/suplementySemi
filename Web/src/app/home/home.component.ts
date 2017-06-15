@@ -1,17 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { Router } from '@angular/router';
-
-import {
-    listAllCategories, listAllProducers, listAllSupplements, listFilteredSupplementsByCategory,
-    listFilteredSupplementsByProducer
-} from './../api';
-import { Supplement } from "../models/supplement";
-import { Opinion } from "../models/opinion";
+import { Supplement } from '../models/supplement';
+import { SupplementService } from '../services/supplementService';
 
 import 'rxjs/add/operator/toPromise';
-import { isNullOrUndefined } from "util";
-import {SupplementService} from "../services/supplementService";
 
 @Component({
   selector: 'app-home',
@@ -21,18 +12,21 @@ import {SupplementService} from "../services/supplementService";
 
 export class HomeComponent implements OnInit {
 
-  public supplementsList: Array<Supplement> = new Array<Supplement>();
-  public categoriesList: Array<string> = new Array<string>();
-  public producersList: Array<string> = new Array<string>();
-
+  supplementsList: Array<Supplement> = new Array<Supplement>();
+  categoriesList: Array<string> = new Array<string>();
+  producersList: Array<string> = new Array<string>();
+  suppNameFilter: string;
+  selectedProducer: string;
+  selectedCategory: string;
   error: { messages: Array<string>} = { messages: null };
 
-  constructor(private http: Http, private router: Router, private supplement: SupplementService) { }
+  constructor(private supplement: SupplementService) { }
 
   ngOnInit() {
     this.handleListAll();
     this.handleCategoriesList();
     this.handleProducersList();
+    this.suppNameFilter = '';
   }
 
   handleListAll() {
@@ -71,6 +65,8 @@ export class HomeComponent implements OnInit {
   }
 
   handleFilterSupplementsByCategory(categoryFilter: string) {
+      this.selectedCategory = categoryFilter;
+      this.selectedProducer = null;
       this.supplement.getFilteredSupplementByCategories(categoryFilter, (errors, supplements) => {
           if (!errors) {
               this.supplementsList = supplements;
@@ -82,6 +78,8 @@ export class HomeComponent implements OnInit {
   }
 
   handleFilterSupplementsByProducer(producerFilter: string) {
+      this.selectedProducer = producerFilter;
+      this.selectedCategory = null;
       this.supplement.getFilteredSupplementsByProducers(producerFilter, (errors, supplements) => {
           if (!errors) {
               this.supplementsList = supplements;

@@ -15,6 +15,10 @@ module.exports.main = function(request, response) {
 				response.status(400).json(null);
 			}
 
+			producers.sort(function(a,b) {
+				return a.localeCompare(b);
+			})
+
 			response.json(producers);
 		});
 
