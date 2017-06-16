@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SupplementService } from '../services/supplementService';
 import { Supplement } from '../models/supplement';
-import {Opinion} from "../models/opinion";
+import { Opinion } from '../models/opinion';
 
 @Component({
   selector: 'app-supplement-info',
@@ -11,7 +11,6 @@ import {Opinion} from "../models/opinion";
 })
 export class SupplementInfoComponent implements OnInit {
   supplementInfo: Supplement = new Supplement();
-  opinions: Array<Opinion> = null;
   constructor(private route: ActivatedRoute, private supplementService: SupplementService) { }
 
   ngOnInit() {
@@ -20,9 +19,6 @@ export class SupplementInfoComponent implements OnInit {
 
       this.supplementService.getSupplementByName(supplementName, (errors, supplement) => {
         this.supplementInfo = supplement;
-        if (this.supplementInfo.opinions != null) {
-          this.opinions = this.supplementInfo.opinions;
-        }
       })
 
     })

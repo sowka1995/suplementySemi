@@ -12,6 +12,19 @@ h2{
     font-size:25pt;
     margin-left:15px;
 }
+hr {
+	margin-left: 15px;
+}
+.comment {
+	margin-left: 15px;
+}
+.comment hr {
+	margin-left: 0px;
+}
+.ratings {
+	margin-top:5px;
+    color: #d17581;
+}
 .ViewProductTitle{
     width:100%;
 }
@@ -63,7 +76,6 @@ h2{
 .ViewProductCommentList{
     width:100%;
     margin-top:20px;
-    display:inline-block;
 }
 .ViewProductButton{
     margin-left:10px;

@@ -2,10 +2,14 @@
   <div class = "row">
 
     <div class = "ViewProductTitle">
-      <h1>{{supplementInfo.name}} <ng-template *ngIf="supplementInfo.weight">{{supplementInfo.weight}}</ng-template></h1>
+      <h1>{{supplementInfo.name}} <span *ngIf="supplementInfo.weight">{{supplementInfo.weight}}</span></h1>
       <h2>{{supplementInfo.price}} zł</h2>
     </div>
-    <div class="ViewProductRate"> Ocena klientów: tu masz miejsce na gwiazdki</div>
+    <div class="ViewProductRate"> Średnia ocena klientów:
+		<span class="ratings" *ngIf="supplementInfo.opinions">
+			<span class="glyphicon glyphicon-star" *ngFor="let i of supplementInfo.rate"></span>
+		</span>
+	</div>
 
     <div class="ViewProductImgBox">
       <img src="../../assets/images/{{supplementInfo.image}}" alt="ShopLogo">
@@ -31,11 +35,20 @@
       </div>
     </div>
 
-    <div class="ViewProductComment">
-      <ng-template *ngIf="opinions" *ngFor="let opinion of opinions">
-        kupa
-      </ng-template>
-    </div>
-
+	<div class="ViewProductCommentList">
+		<h2 style="color: black;">Komentarze</h2>
+		<hr/>
+		<div *ngIf="supplementInfo.opinions">
+		<div class="comment" *ngFor="let opinion of supplementInfo.opinions">
+			<span class="pull-right">{{opinion.commentDate}}</span>
+			<div class="ratings" *ngIf="supplementInfo.opinions">
+				<span class="glyphicon glyphicon-star" *ngFor="let i of supplementInfo.rate"></span>
+			</div>
+			<span>{{opinion.comment}}</span>
+			<hr/>
+		</div>
+		</div>
+	</div>
+   
   </div>
 </div>

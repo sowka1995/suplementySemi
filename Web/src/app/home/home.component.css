@@ -40,7 +40,9 @@ a {
     padding-left: 10px;
     color: #d17581;
 }
-
+.free-star {
+	opacity: 0.25;
+}
 .thumbnail {
     padding: 0;
 }
