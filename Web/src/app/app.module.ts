@@ -14,7 +14,7 @@ import { SupplementComponent } from './supplement/supplement.component';
 import { SupplementAddComponent } from './supplement-add/supplement-add.component';
 import { SupplementInfoComponent } from './supplement-info/supplement-info.component';
 import { FilterNamePipe } from './pipes/filterNamePipe';
-import { DropdownModule } from 'ng2-dropdown';
+import { RatingModule } from 'ngx-rating';
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -41,7 +41,7 @@ const routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    DropdownModule,
+	RatingModule,
     RouterModule.forRoot(routes),
 	ImageUploadModule.forRoot()
   ],

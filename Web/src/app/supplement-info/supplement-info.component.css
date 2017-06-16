@@ -71,10 +71,8 @@ hr {
     display:inline-block;
     margin-left:25px;
 }
-.ViewProductComment textarea{
-    width:75%;
-    height:150px;
-    margin:10px;
+.form-group {
+	width: 75%;
 }
 .ViewProductCommentList{
     width:100%;

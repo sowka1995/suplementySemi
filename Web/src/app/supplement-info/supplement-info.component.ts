@@ -11,6 +11,7 @@ import { Opinion } from '../models/opinion';
 })
 export class SupplementInfoComponent implements OnInit {
   supplementInfo: Supplement = new Supplement();
+  newOpinion: Opinion = new Opinion();
   constructor(private route: ActivatedRoute, private supplementService: SupplementService) { }
 
   ngOnInit() {
@@ -22,6 +23,8 @@ export class SupplementInfoComponent implements OnInit {
       })
 
     })
+	
+	this.newOpinion.rate = 3;
   }
 
 }

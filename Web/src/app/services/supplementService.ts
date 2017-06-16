@@ -162,7 +162,9 @@ export class SupplementService {
             });
             item.opinions = opinions;
             item.rate = Math.round(count / supplement.opinions.length);
-        }
+        } else {
+			item.rate = 0;
+		}
 
         return item;
     }

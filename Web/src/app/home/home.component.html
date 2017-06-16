@@ -69,7 +69,7 @@
 						<div class="ratings" *ngIf="!supplement.opinions">
 							<p class="pull-right"> 0 komentarzy </p>
 							<p>
-								<span class="glyphicon glyphicon-star free-star" *ngFor="let i of supplement.rate"></span>
+								<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= supplement.rate}"></span>
 							</p>
 						</div>
 					</div>
