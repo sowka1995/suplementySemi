@@ -17,5 +17,7 @@ module.exports = function(app) {
   app.get('/api/supplements/listFilteredSupplementsByCategory/:categoryFilter', supplements.listFilteredSupplementsByCategory.main)
   app.get('/api/supplements/listFilteredSupplementsByProducer/:producerFilter', supplements.listFilteredSupplementsByProducer.main)
 
-  app.post('/api/supplements/add', supplements.addSupplement.main)
+  app.post('/api/supplements/addSupplement', supplements.addSupplement.main)
+  app.post('/api/supplements/addSupplementOpinion', supplements.addSupplementOpinion.main)
+  
 };

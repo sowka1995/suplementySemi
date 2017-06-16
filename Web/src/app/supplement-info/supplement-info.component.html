@@ -7,7 +7,7 @@
     </div>
     <div class="ViewProductRate"> Średnia ocena klientów:
 		<span class="ratings">
-			<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= supplementInfo.rate}"></span>
+			<span class="glyphicon glyphicon-star" *ngFor="let star of [1,2,3,4,5]" [ngClass]="{freeStar: star > supplementInfo.rate}"></span>
 		</span>
 	</div>
 
@@ -30,7 +30,7 @@
     <div class="ViewProductComment">
       <h3>Dodaj komentarz</h3>
 	  
-	  <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
+	  <form (ngSubmit)="onSubmit(commentForm)" #commentForm="ngForm">
 		<div class="form-group">
 			<span> <label for="commentRate">Ocena:</label> <rating [(ngModel)]="newOpinion.rate" name="commentRate"></rating> </span>
 		</div>
@@ -59,7 +59,7 @@
 			<div class="comment" *ngFor="let opinion of supplementInfo.opinions">
 				<span class="pull-right">{{opinion.commentDate}}</span>
 				<div class="ratings" *ngIf="supplementInfo.opinions">
-					<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= supplementInfo.rate}"></span>
+					<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= (supplementInfo.rate-1)}"></span>
 				</div>
 				<span>{{opinion.comment}}</span>
 				<hr/>

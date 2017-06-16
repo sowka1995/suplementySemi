@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 import { isNullOrUndefined } from 'util';
 
 import {
-    addSupplement, listAllCategories, listAllProducers, listAllSupplements,
+    addSupplement, addSupplementOpinion, listAllCategories, listAllProducers, listAllSupplements,
     listFilteredSupplementsByCategory,
     listFilteredSupplementsByProducer,
     showSupplement
@@ -120,7 +120,7 @@ export class SupplementService {
 
             })
             .catch((errors) => {
-                callback(errors, null)
+                callback(errors, null);
             })
     }
 
@@ -133,9 +133,22 @@ export class SupplementService {
                 }
             })
             .catch((errors) => {
-                callback(errors, null)
+                callback(errors, null);
             })
     }
+	
+	postAddSupplementOpinion(opinion, callback) {
+		this.http.post(addSupplementOpinion, opinion)
+			.toPromise()
+			.then((response) => {
+				if (response.status === 200) {
+					callback(null, 'pomyślnie dodano komentarz');
+				}
+			})
+			.catch((errors) => {
+				callback(errors, null);
+			})
+	}
 
     private assignValues(supplement): Supplement {
         let item = new Supplement();
@@ -154,6 +167,7 @@ export class SupplementService {
             let opinions: Array<Opinion> = new Array<Opinion>();
             supplement.opinions.forEach(o => {
                 let opinion = new Opinion();
+				opinion.id = o.id;
                 opinion.comment = o.comment;
                 opinion.commentDate = o.commentDate;
                 opinion.rate = o.rate;

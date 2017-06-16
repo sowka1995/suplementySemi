@@ -11,7 +11,7 @@ module.exports.main = function(request, response) {
 
 		var supplementsCollection = db.collection('supplements');
 
-		supplementsCollection.find({ 'name': _productName } , { _id: 0 }).toArray(function(err, supplement) {
+		supplementsCollection.find({ 'name': _productName }).toArray(function(err, supplement) {
 			if (err) {
 				response.status(400).json(null);
 			}

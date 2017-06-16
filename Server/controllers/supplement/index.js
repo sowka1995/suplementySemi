@@ -5,3 +5,4 @@ module.exports.listFilteredSupplementsByCategory = require('./listFilteredSupple
 module.exports.listFilteredSupplementsByProducer = require('./listFilteredSupplementsByProducer.js');
 module.exports.addSupplement = require('./addSupplement');
 module.exports.showSupplement = require('./showSupplement');
+module.exports.addSupplementOpinion = require('./addSupplementOpinion');

@@ -9,7 +9,8 @@ export const listFilteredSupplementsByCategory = function (categoryFilter) {
 export const listFilteredSupplementsByProducer= function (producerFilter) {
     return server + '/supplements/listFilteredSupplementsByProducer/' + producerFilter;
 };
-export const addSupplement: string = server + '/supplements/add';
+export const addSupplement: string = server + '/supplements/addSupplement';
+export const addSupplementOpinion: string = server + '/supplements/addSupplementOpinion';
 export const showSupplement = function (supplementName) {
     return server + '/supplements/info/' + supplementName;
 };

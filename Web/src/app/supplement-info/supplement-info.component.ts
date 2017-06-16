@@ -20,11 +20,39 @@ export class SupplementInfoComponent implements OnInit {
 
       this.supplementService.getSupplementByName(supplementName, (errors, supplement) => {
         this.supplementInfo = supplement;
+		this.newOpinion.id = this.supplementInfo.id;
       })
-
+	  
     })
 	
 	this.newOpinion.rate = 3;
   }
+  
+  onSubmit(form) {
+	let dateNow = new Date();
+	this.newOpinion.commentDate = this.formatDate(dateNow);
+    this.handleAddSupplementOpinion((result) => {
+		if (result) {
+			let op = new Opinion();
+			op.comment = this.newOpinion.comment;
+			op.commentDate = this.newOpinion.commentDate;
+			op.rate = this.newOpinion.rate;
+			this.supplementInfo.opinions.unshift(op);
+			form.reset();
+			this.newOpinion.rate = 3;
+			this.newOpinion.comment = '';
+		}
+	});
+  }
+  
+  private formatDate(date: Date): string {
+	return date.getDate() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
+  }
 
+  private handleAddSupplementOpinion(callback) {
+	this.supplementService.postAddSupplementOpinion(this.newOpinion, (errors, success) => {
+		callback(true);
+	})
+	
+  }
 }
