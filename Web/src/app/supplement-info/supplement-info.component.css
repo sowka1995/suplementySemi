@@ -25,6 +25,9 @@ hr {
 	margin-top:5px;
     color: #d17581;
 }
+.freeStar {
+    opacity: 0.4 !important;
+}
 .ViewProductTitle{
     width:100%;
 }

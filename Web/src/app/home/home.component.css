@@ -40,8 +40,8 @@ a {
     padding-left: 10px;
     color: #d17581;
 }
-.free-star {
-	opacity: 0.25;
+.freeStar {
+	opacity: 0.4 !important;
 }
 .thumbnail {
     padding: 0;

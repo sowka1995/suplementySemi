@@ -14,7 +14,7 @@
 					{{category}}
 				</a>
 			</div>
-			
+
 			<p class="lead">PRODUCENCI</p>
 			<div class="list-group">
 				<a class="list-group-item" *ngFor="let producer of producersList"
@@ -25,25 +25,25 @@
 			</div>
 
 		</div>
-		
+
 
 		<div class="col-md-9">
 
 			<div class="row carousel-holder">
 
 				<div class="col-md-12">
-					<div id="imaginary_container"> 
+					<div id="imaginary_container">
 						<div class="input-group stylish-input-group">
 							<input type="text" class="form-control"  placeholder="Szukaj" [(ngModel)]="suppNameFilter">
 							<span class="input-group-addon">
 								<button type="submit">
 									<span class="glyphicon glyphicon-search">
 									</span>
-								</button>  
+								</button>
 							</span>
 						</div>
 					</div>
-					
+
 				</div>
 
 			</div>
@@ -63,7 +63,7 @@
 						<div class="ratings" *ngIf="supplement.opinions">
 							<p class="pull-right">{{supplement.opinions.length}} komentarze</p>
 							<p>
-								<span class="glyphicon glyphicon-star" *ngFor="let start of supplement.rate; let i = index;" [ngClass]="{'free-star': i< supplement.opinions.length"></span>
+								<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= supplement.rate}"></span>
 							</p>
 						</div>
 						<div class="ratings" *ngIf="!supplement.opinions">

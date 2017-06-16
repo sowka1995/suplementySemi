@@ -161,7 +161,7 @@ export class SupplementService {
                 count += o.rate;
             });
             item.opinions = opinions;
-            item.rate = new Array(Math.round(count / supplement.opinions.length));
+            item.rate = Math.round(count / supplement.opinions.length);
         }
 
         return item;

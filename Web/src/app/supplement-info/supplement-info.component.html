@@ -7,7 +7,7 @@
     </div>
     <div class="ViewProductRate"> Średnia ocena klientów:
 		<span class="ratings" *ngIf="supplementInfo.opinions">
-			<span class="glyphicon glyphicon-star" *ngFor="let i of supplementInfo.rate"></span>
+			<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= supplementInfo.rate}"></span>
 		</span>
 	</div>
 
@@ -42,7 +42,7 @@
 		<div class="comment" *ngFor="let opinion of supplementInfo.opinions">
 			<span class="pull-right">{{opinion.commentDate}}</span>
 			<div class="ratings" *ngIf="supplementInfo.opinions">
-				<span class="glyphicon glyphicon-star" *ngFor="let i of supplementInfo.rate"></span>
+                <span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= supplementInfo.rate}"></span>
 			</div>
 			<span>{{opinion.comment}}</span>
 			<hr/>

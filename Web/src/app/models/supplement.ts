@@ -11,6 +11,6 @@ export class Supplement {
     amount: number;
     image: string;
     imageSource: any;
-    rate?: Array<number>;
+    rate?: number;
     opinions?: Array<Opinion>;
 }
