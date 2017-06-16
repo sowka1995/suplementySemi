@@ -58,8 +58,8 @@
 		<div *ngIf="supplementInfo.opinions">
 			<div class="comment" *ngFor="let opinion of supplementInfo.opinions">
 				<span class="pull-right">{{opinion.commentDate}}</span>
-				<div class="ratings" *ngIf="supplementInfo.opinions">
-					<span class="glyphicon glyphicon-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{freeStar: star >= (supplementInfo.rate-1)}"></span>
+				<div class="ratings">
+					<span class="glyphicon glyphicon-star" *ngFor="let star of [1,2,3,4,5]" [ngClass]="{freeStar: star > opinion.rate}"></span>
 				</div>
 				<span>{{opinion.comment}}</span>
 				<hr/>
