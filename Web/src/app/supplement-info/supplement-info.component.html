@@ -3,7 +3,7 @@
     <div class = "ViewProductTitle">
       <h1>{{supplementInfo.name}} <span *ngIf="supplementInfo.weight">{{supplementInfo.weight}}</span></h1>
       <h2>{{supplementInfo.price}} zł</h2>
-		<h4><span><a class="fa fa-remove" style="cursor: pointer" title="Usuń produkt" >Usuń</a></span></h4>
+		<h4><span><a (click)="handleDeleteSupplement()" class="fa fa-remove" style="cursor: pointer" title="Usuń produkt" >Usuń</a></span></h4>
     </div>
 
     <div class="ViewProductRate"> Średnia ocena klientów:

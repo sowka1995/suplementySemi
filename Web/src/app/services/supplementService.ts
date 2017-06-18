@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 import { isNullOrUndefined } from 'util';
 
 import {
-    addSupplement, addSupplementOpinion, listAllCategories, listAllProducers, listAllSupplements,
+    addSupplement, addSupplementOpinion, deleteSupplement, listAllCategories, listAllProducers, listAllSupplements,
     listFilteredSupplementsByCategory,
     listFilteredSupplementsByProducer,
     showSupplement
@@ -137,8 +137,15 @@ export class SupplementService {
             })
     }
 
-    postDeleteSupplement(supplementId, callback) {
-
+    postDeleteSupplement(id, callback) {
+        this.http.post(deleteSupplement, { supplementId: id })
+            .toPromise()
+            .then((response) => {
+               callback(null, response);
+            })
+            .catch((errors) => {
+                callback(errors, null);
+            });
     }
 	
 	postAddSupplementOpinion(opinion, callback) {

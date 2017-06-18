@@ -19,5 +19,6 @@ module.exports = function(app) {
 
   app.post('/api/supplements/addSupplement', supplements.addSupplement.main)
   app.post('/api/supplements/addSupplementOpinion', supplements.addSupplementOpinion.main)
-  
+  app.post('/api/supplements/deleteSupplement', supplements.deleteSupplement.main)
+
 };

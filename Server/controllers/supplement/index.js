@@ -6,3 +6,4 @@ module.exports.listFilteredSupplementsByProducer = require('./listFilteredSupple
 module.exports.addSupplement = require('./addSupplement');
 module.exports.showSupplement = require('./showSupplement');
 module.exports.addSupplementOpinion = require('./addSupplementOpinion');
+module.exports.deleteSupplement = require('./deleteSupplement');

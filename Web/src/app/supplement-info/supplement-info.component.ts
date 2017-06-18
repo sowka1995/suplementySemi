@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { SupplementService } from '../services/supplementService';
 import { Supplement } from '../models/supplement';
 import { Opinion } from '../models/opinion';
@@ -13,7 +13,7 @@ export class SupplementInfoComponent implements OnInit {
   supplementInfo: Supplement = new Supplement();
   newOpinion: Opinion = new Opinion();
   image: string;
-  constructor(private route: ActivatedRoute, private supplementService: SupplementService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private supplementService: SupplementService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -46,7 +46,16 @@ export class SupplementInfoComponent implements OnInit {
 		}
 	});
   }
-  
+
+  handleDeleteSupplement() {
+    this.supplementService.postDeleteSupplement(this.supplementInfo.id, (error, result) => {
+        if (!error) {
+            console.log(error);
+        }
+        this.router.navigate(['']);
+    })
+  }
+
   private formatDate(date: Date): string {
 	return date.getDate() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
   }
