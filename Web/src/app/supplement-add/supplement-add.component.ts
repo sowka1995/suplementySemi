@@ -12,13 +12,14 @@ export class SupplementAddComponent implements OnInit {
   producersList: Array<string>;
   categoriesList: Array<string>;
   imageAdded: boolean = false;
+  message: string = null;
   constructor(private supplementService: SupplementService) {
     this.supplement = new Supplement();
   }
 
   ngOnInit() {
     this.prepareProducers();
-    this.prepareCatgories();
+    this.prepareCategories();
   }
 
   submitted = false;
@@ -26,6 +27,10 @@ export class SupplementAddComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.handleAddSupplement();
+  }
+
+  onImageRemove(event) {
+    this.imageAdded = false;
   }
 
   private prepareProducers() {
@@ -38,7 +43,7 @@ export class SupplementAddComponent implements OnInit {
     })
   }
 
-  private prepareCatgories() {
+  private prepareCategories() {
     this.supplementService.getAllCategories((errors, categories) => {
       if (!errors) {
         this.categoriesList = categories;
@@ -49,10 +54,10 @@ export class SupplementAddComponent implements OnInit {
   }
 
   handleAddSupplement() {
-    console.log(this.supplement)
     this.supplementService.postAddSupplement(this.supplement, (error, success) => {
       if (!error) {
-        console.log(success)
+        console.log(success);
+        this.message = success;
       } else {
         console.log(error);
       }
@@ -60,6 +65,7 @@ export class SupplementAddComponent implements OnInit {
   }
 
   handleImage(event) {
+    this.imageAdded = true;
     this.supplement.imageSource = event.src;
     this.supplement.image = event.file.name;
   }

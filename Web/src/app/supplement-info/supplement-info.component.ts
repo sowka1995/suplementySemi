@@ -12,6 +12,7 @@ import { Opinion } from '../models/opinion';
 export class SupplementInfoComponent implements OnInit {
   supplementInfo: Supplement = new Supplement();
   newOpinion: Opinion = new Opinion();
+  image: string;
   constructor(private route: ActivatedRoute, private supplementService: SupplementService) { }
 
   ngOnInit() {
@@ -21,9 +22,10 @@ export class SupplementInfoComponent implements OnInit {
       this.supplementService.getSupplementByName(supplementName, (errors, supplement) => {
         this.supplementInfo = supplement;
 		this.newOpinion.id = this.supplementInfo.id;
+		this.image = '../../assets/images/' + this.supplementInfo.image;
       })
 	  
-    })
+    });
 	
 	this.newOpinion.rate = 3;
   }
@@ -51,7 +53,11 @@ export class SupplementInfoComponent implements OnInit {
 
   private handleAddSupplementOpinion(callback) {
 	this.supplementService.postAddSupplementOpinion(this.newOpinion, (errors, success) => {
-		callback(true);
+	    if (success) {
+            callback(true);
+        } else {
+	        callback(false);
+        }
 	})
 	
   }

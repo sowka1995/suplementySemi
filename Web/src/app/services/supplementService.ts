@@ -136,6 +136,10 @@ export class SupplementService {
                 callback(errors, null);
             })
     }
+
+    postDeleteSupplement(supplementId, callback) {
+
+    }
 	
 	postAddSupplementOpinion(opinion, callback) {
 		this.http.post(addSupplementOpinion, opinion)
@@ -177,6 +181,7 @@ export class SupplementService {
             item.opinions = opinions;
             item.rate = Math.round(count / supplement.opinions.length);
         } else {
+            item.opinions = new Array<Opinion>();
 			item.rate = 0;
 		}
 

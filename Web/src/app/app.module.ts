@@ -15,6 +15,7 @@ import { SupplementAddComponent } from './supplement-add/supplement-add.componen
 import { SupplementInfoComponent } from './supplement-info/supplement-info.component';
 import { FilterNamePipe } from './pipes/filterNamePipe';
 import { RatingModule } from 'ngx-rating';
+import { SmoothScrollToDirective, SmoothScrollDirective } from 'ng2-smooth-scroll';
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -35,7 +36,9 @@ const routes = [
     SupplementComponent,
     SupplementAddComponent,
     SupplementInfoComponent,
-    FilterNamePipe
+    FilterNamePipe,
+    SmoothScrollToDirective,
+    SmoothScrollDirective
   ],
   imports: [
     BrowserModule,

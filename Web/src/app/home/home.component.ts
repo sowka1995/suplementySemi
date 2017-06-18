@@ -30,6 +30,8 @@ export class HomeComponent implements OnInit {
   }
 
   handleListAll() {
+    this.selectedCategory = null;
+    this.selectedProducer = null;
     this.error = {messages: null};
 
     this.supplement.getAllSupplements((errors, supplements) => {

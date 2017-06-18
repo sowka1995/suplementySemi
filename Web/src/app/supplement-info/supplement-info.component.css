@@ -12,6 +12,10 @@ h2{
     font-size:25pt;
     margin-left:15px;
 }
+h4 {
+    display: inline-block;
+    margin-left: 50px;
+}
 hr {
 	margin-left: 15px;
 }

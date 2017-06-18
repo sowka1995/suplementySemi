@@ -1,10 +1,11 @@
 <div class="col-md-9">
-  <div class = "row">
 
     <div class = "ViewProductTitle">
       <h1>{{supplementInfo.name}} <span *ngIf="supplementInfo.weight">{{supplementInfo.weight}}</span></h1>
       <h2>{{supplementInfo.price}} zł</h2>
+		<h4><span><a class="fa fa-remove" style="cursor: pointer" title="Usuń produkt" >Usuń</a></span></h4>
     </div>
+
     <div class="ViewProductRate"> Średnia ocena klientów:
 		<span class="ratings">
 			<span class="glyphicon glyphicon-star" *ngFor="let star of [1,2,3,4,5]" [ngClass]="{freeStar: star > supplementInfo.rate}"></span>
@@ -12,7 +13,7 @@
 	</div>
 
     <div class="ViewProductImgBox">
-      <img src="../../assets/images/{{supplementInfo.image}}" alt="ShopLogo">
+      <img src="{{image}}">
     </div>
 
     <div class="ViewProductDetails">
@@ -69,6 +70,5 @@
 			<div class="comment"> <h4>Brak komentarzy </h4></div>
 		</div>
 	</div>
-   
-  </div>
+
 </div>

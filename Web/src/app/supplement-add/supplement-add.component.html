@@ -1,119 +1,119 @@
-<div class="row">
+<div class="col-md-9">
 
-  <div>
-    <h2>Dodaj nowy produkt</h2>
-    <hr/>
+    <div>
+      <h2>Dodaj nowy produkt</h2>
+      <hr/>
 
-    <form (ngSubmit)="onSubmit()" #supplementForm="ngForm">
+      <form (ngSubmit)="onSubmit()" #supplementForm="ngForm">
 
-      <div class="form-group">
-        <label for="name">Nazwa produktu</label>
-        <input type="text" class="form-control" id="name"
-               required
-               [(ngModel)]="supplement.name" name="name"
-               #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
-             class="alert alert-danger">
-          Nazwa jest wymagana
+        <div class="form-group">
+          <label for="name">Nazwa produktu</label>
+          <input type="text" class="form-control" id="name"
+                 required
+                 [(ngModel)]="supplement.name" name="name"
+                 #name="ngModel">
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            Nazwa jest wymagana
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="producer">Producent</label>
-        <input type="text" class="form-control" id="producer"
-               required
-               [(ngModel)]="supplement.producer" name="producer"
-               #producer="ngModel">
+        <div class="form-group">
+          <label for="producer">Producent</label>
+          <input type="text" class="form-control" id="producer"
+                 required
+                 [(ngModel)]="supplement.producer" name="producer"
+                 #producer="ngModel">
 
-        <label for="producer">Wybierz producenta z listy</label>
-        <select class="form-control list"
-                [(ngModel)]="supplement.producer" name="producer">
-          <option *ngFor="let prod of producersList" [value]="prod">{{prod}}</option>
-        </select>
+          <label for="producer">Wybierz producenta z listy</label>
+          <select class="form-control list"
+                  [(ngModel)]="supplement.producer" name="producer">
+            <option *ngFor="let prod of producersList" [value]="prod">{{prod}}</option>
+          </select>
 
-        <div [hidden]="producer.valid || producer.pristine"
-             class="alert alert-danger">
-          Producent jest wymagany
+          <div [hidden]="producer.valid || producer.pristine"
+               class="alert alert-danger">
+            Producent jest wymagany
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="category">Kategoria</label>
-        <input type="text" class="form-control reg_name" id="category"
-               required
-               [(ngModel)]="supplement.category" name="category"
-               #category="ngModel">
+        <div class="form-group">
+          <label for="category">Kategoria</label>
+          <input type="text" class="form-control reg_name" id="category"
+                 required
+                 [(ngModel)]="supplement.category" name="category"
+                 #category="ngModel">
 
-        <label for="category">Wybierz kategorie z listy</label>
-        <select class="form-control list"
-                [(ngModel)]="supplement.category" name="category">
-          <option *ngFor="let cat of categoriesList" [value]="cat">{{cat}}</option>
-        </select>
+          <label for="category">Wybierz kategorie z listy</label>
+          <select class="form-control list"
+                  [(ngModel)]="supplement.category" name="category">
+            <option *ngFor="let cat of categoriesList" [value]="cat">{{cat}}</option>
+          </select>
 
-        <div [hidden]="category.valid || category.pristine"
-             class="alert alert-danger">
-          Kategoria jest wymagana
+          <div [hidden]="category.valid || category.pristine"
+               class="alert alert-danger">
+            Kategoria jest wymagana
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="description">Opis produktu</label>
-        <input type="text" class="form-control" id="description"
-               required
-               [(ngModel)]="supplement.description" name="description"
-               #description="ngModel">
-        <div [hidden]="description.valid || description.pristine"
-             class="alert alert-danger">
-          Opis produktu jest wymagany
+        <div class="form-group">
+          <label for="description">Opis produktu</label>
+          <input type="text" class="form-control" id="description"
+                 required
+                 [(ngModel)]="supplement.description" name="description"
+                 #description="ngModel">
+          <div [hidden]="description.valid || description.pristine"
+               class="alert alert-danger">
+            Opis produktu jest wymagany
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="price">Cena produktu</label>
-        <input type="text" class="form-control" id="price"
-               required
-               [(ngModel)]="supplement.price" name="price"
-               #price="ngModel">
-        <div [hidden]="price.valid || price.pristine"
-             class="alert alert-danger">
-          Cena produktu jest wymagana
+        <div class="form-group">
+          <label for="price">Cena produktu</label>
+          <input type="text" class="form-control" id="price"
+                 required
+                 [(ngModel)]="supplement.price" name="price"
+                 #price="ngModel">
+          <div [hidden]="price.valid || price.pristine"
+               class="alert alert-danger">
+            Cena produktu jest wymagana
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="amount">Ilość produktu na stanie</label>
-        <input type="text" class="form-control" id="amount"
-               required
-               [(ngModel)]="supplement.amount" name="amount"
-               #amount="ngModel">
-        <div [hidden]="amount.valid || amount.pristine"
-             class="alert alert-danger">
-          Ilość produktów jest wymagana
+        <div class="form-group">
+          <label for="amount">Ilość produktu na stanie</label>
+          <input type="text" class="form-control" id="amount"
+                 required
+                 [(ngModel)]="supplement.amount" name="amount"
+                 #amount="ngModel">
+          <div [hidden]="amount.valid || amount.pristine"
+               class="alert alert-danger">
+            Ilość produktów jest wymagana
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="wieght">Waga produktu</label>
-        <input type="text" class="form-control" id="wieght"
-               [(ngModel)]="supplement.weight" name="weight"
-               #weight="ngModel">
-      </div>
+        <div class="form-group">
+          <label for="wieght">Waga produktu</label>
+          <input type="text" class="form-control" id="wieght"
+                 [(ngModel)]="supplement.weight" name="weight"
+                 #weight="ngModel">
+        </div>
 
-      <div class="form-group">
-        <label >Dodaj zdjęcie produktu</label>
-        <image-upload
-                [max]="1"
-                [buttonCaption]="'Wybierz zdjęcie'"
-                [dropBoxMessage]="'Upuść zdjęcie tutaj'"
-                (onFileUploadFinish)="handleImage($event)">
-        </image-upload>
-      </div>
+        <div class="form-group">
+          <label >Dodaj zdjęcie produktu</label>
+          <image-upload
+                  [max]="1"
+                  [buttonCaption]="'Wybierz zdjęcie'"
+                  [dropBoxMessage]="'Upuść zdjęcie tutaj'"
+                  (onFileUploadFinish)="handleImage($event)"
+                  (onRemove)="onImageRemove($event)">
+          </image-upload>
+        </div>
 
-      <button type="submit" class="btn btn-success pull-right" [disabled]="!supplementForm.form.valid ">Dodaj</button>
+        <button type="submit" class="btn btn-success pull-right" [disabled]="!supplementForm.form.valid || !imageAdded">Dodaj</button>
 
-    </form>
+      </form>
 
-  </div>
-
+    </div>
 
 </div>
